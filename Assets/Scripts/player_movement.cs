@@ -56,35 +56,58 @@ public class player_movement : MonoBehaviour
 
     private void HandleKeyboardInputs()
     {
-        // Get input from the vertical axis (default is arrow keys or 'W' and 'S').
+
+        // 'moveSpeed' should be defined elsewhere in the class.
         float verticalInput = Input.GetAxis("Vertical");
 
-        // Calculate the amount to move this frame.
-        // Time.deltaTime converts moveSpeed to units per second instead of units per frame.
-        float movementAmount = verticalInput * moveSpeed * Time.deltaTime;
+        // Get the current position.
+        Vector3 currentPosition = transform.position;
 
-        // Move the player's transform.
-        transform.Translate(0, movementAmount, 0);
+        // Check if we're moving upwards and if we are below the upper limit.
+        if (verticalInput > 0 && currentPosition.y < 6)
+        {
+            // Calculate the amount to move this frame.
+            float movementAmount = verticalInput * moveSpeed * Time.deltaTime;
+            // Move the player's transform.
+            currentPosition.y += movementAmount;
+        }
+        // Check if we're moving downwards and if we are above the lower limit.
+        else if (verticalInput < 0 && currentPosition.y > -6)
+        {
+            // Calculate the amount to move this frame.
+            float movementAmount = verticalInput * moveSpeed * Time.deltaTime;
+            // Move the player's transform.
+            currentPosition.y += movementAmount;
+        }
+
+        // Apply the position change.
+        transform.position = currentPosition;
+
     }
 
     private void HandleGesturesInputs() {
+        float verticalInput = Input.GetAxis("Vertical");
         // Down
         int direction = 0;
         float movementAmount = 0;
-        if (inputRecieverComponent.gestureMovementArr[0].Equals("Close")){
+        Vector3 currentPosition = transform.position;
+        if (inputRecieverComponent.gestureMovementArr.Length>0 && inputRecieverComponent.gestureMovementArr[0].Equals("Close") && currentPosition.y > -6)
+        {
             direction = -1;
             movementAmount = direction * moveSpeed * Time.deltaTime;
+            currentPosition.y += movementAmount;
         }
-        else if (inputRecieverComponent.gestureMovementArr[0].Equals("Open"))
+        else if (inputRecieverComponent.gestureMovementArr.Length > 0 && inputRecieverComponent.gestureMovementArr[0].Equals("Open") && currentPosition.y < 6)
         {
             direction = 1;
             movementAmount = direction * moveSpeed * Time.deltaTime;
+            currentPosition.y += movementAmount;
         }
         else
         {
            
         }
-        transform.Translate(0, movementAmount, 0);
+        transform.position = currentPosition;
     }
 
     public bool canAttack()
