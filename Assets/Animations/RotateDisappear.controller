@@ -35,7 +35,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: rotate
+    m_ConditionEvent: Rotate
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6101491969620077165}
@@ -60,7 +60,7 @@ AnimatorController:
   m_Name: RotateDisappear
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: rotate
+  - m_Name: Rotate
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0

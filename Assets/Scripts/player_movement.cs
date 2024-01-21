@@ -87,7 +87,6 @@ public class player_movement : MonoBehaviour
         int direction = 0;
         float movementAmount = 0;
         Vector3 currentPosition = transform.position;
-        Debug.log(verticalInput);
         if (inputRecieverComponent.gestureMovementArr[0].Equals("Close") && currentPosition.y > -6)
         {
             direction = -1;

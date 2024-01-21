@@ -8,12 +8,19 @@ public class dementorMoveScript : MonoBehaviour
 
     public float deadZone = -45;
 
+    public LogicManager logic; 
+
     private Animator animator;
+
+    private bool hasCollided = false;
+
     // Start is called before the first frame update
     void Start()
     {
       animator = GetComponent<Animator>();  
+      logic = GameObject.FindWithTag("Logic").GetComponent<LogicManager>();
     }
+    
     // Update is called once per frame
     void Update()
     {
@@ -25,6 +32,10 @@ public class dementorMoveScript : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other){
+      if(!hasCollided){
+        logic.RemoveHealth();
+        hasCollided = !hasCollided;
+      }
       moveSpeed = 0;
       animator.SetTrigger("Rotate");
 
