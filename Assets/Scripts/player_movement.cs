@@ -87,14 +87,13 @@ public class player_movement : MonoBehaviour
         int direction = 0;
         float movementAmount = 0;
         Vector3 currentPosition = transform.position;
-        Debug.log(verticalInput);
-        if (inputRecieverComponent.gestureMovementArr[0].Equals("Close") && currentPosition.y > -6)
+        if (inputRecieverComponent.gestureMovementArr.Length>0 && inputRecieverComponent.gestureMovementArr[0].Equals("Close") && currentPosition.y > -6)
         {
             direction = -1;
             movementAmount = direction * moveSpeed * Time.deltaTime;
             currentPosition.y += movementAmount;
         }
-        else if (inputRecieverComponent.gestureMovementArr[0].Equals("Open") && currentPosition.y < 6)
+        else if (inputRecieverComponent.gestureMovementArr.Length > 0 && inputRecieverComponent.gestureMovementArr[0].Equals("Open") && currentPosition.y < 6)
         {
             direction = 1;
             movementAmount = direction * moveSpeed * Time.deltaTime;
