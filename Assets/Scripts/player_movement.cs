@@ -4,9 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class player_movement : MonoBehaviour
-
-
-
 {
     // Start is called before the first frame update
     [SerializeField] private float speed;
@@ -19,6 +16,8 @@ public class player_movement : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 3f; // Speed at which the player moves.
     Rigidbody2D body;
+    private float verticalInput;
+    private Animator anim;
 
     private void Awake()
     {
@@ -28,14 +27,14 @@ public class player_movement : MonoBehaviour
         body.gravityScale = 0;
         inputRecieverComponent = inputReceiver.GetComponent<UDPReceive>();
         isUsingKeyboard = true;
-       
-
-
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     private void Update()
     {
+        verticalInput = Input.GetAxis("Vertical");
+
         //body.velocity = new Vector2(body.velocity.x, Input.GetAxis("Vertical") * speed);
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -51,6 +50,8 @@ public class player_movement : MonoBehaviour
             // Handle hand gestures 
             HandleGesturesInputs();
         }
+
+        anim.SetBool("run", verticalInput != 0);
     }
 
     private void HandleKeyboardInputs()
@@ -84,5 +85,10 @@ public class player_movement : MonoBehaviour
            
         }
         transform.Translate(0, movementAmount, 0);
+    }
+
+    public bool canAttack()
+    {
+        return verticalInput == 0;
     }
 }
