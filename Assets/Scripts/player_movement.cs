@@ -17,6 +17,9 @@ public class player_movement : MonoBehaviour
     [SerializeField] private float moveSpeed = 3f; // Speed at which the player moves.
     Rigidbody2D body;
     private float verticalInput;
+
+    private bool shoot = false;
+
     private Animator anim;
 
     private void Awake()
@@ -86,6 +89,7 @@ public class player_movement : MonoBehaviour
     }
 
     private void HandleGesturesInputs() {
+        shoot = false;
         float verticalInput = Input.GetAxis("Vertical");
         // Down
         int direction = 0;
@@ -105,13 +109,16 @@ public class player_movement : MonoBehaviour
         }
         else
         {
-           
+            shoot = true;
         }
         transform.position = currentPosition;
     }
 
     public bool canAttack()
     {
-        return verticalInput == 0;
+        if(isUsingKeyboard){
+            return verticalInput == 0 &&  Input.GetMouseButton(0);
+        }
+        return shoot; 
     }
 }

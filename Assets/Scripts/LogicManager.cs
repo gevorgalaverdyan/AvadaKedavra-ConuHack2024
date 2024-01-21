@@ -50,7 +50,8 @@ public class LogicManager : MonoBehaviour
       if(health <= 0){
          GameOver();
       } 
-      healthText.text = health.ToString(); 
+      
+      healthText.text = "Level: " + health.ToString();
    }
 
    [ContextMenu("Restart Game")]
@@ -58,7 +59,7 @@ public class LogicManager : MonoBehaviour
       SceneManager.LoadScene(SceneManager.GetActiveScene().name);
       activeGame = true;
       health = 3;
-      healthText.text = "Remaining Health: " + health.ToString();
+      healthText.text = "Health: " + health.ToString();
    }
 
    public void GameOver(){
