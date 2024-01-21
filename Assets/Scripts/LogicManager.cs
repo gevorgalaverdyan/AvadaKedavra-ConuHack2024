@@ -16,6 +16,8 @@ public class LogicManager : MonoBehaviour
 
    public DementorSpawnScript dementorSpawn;
 
+   public UDPReceive udpReceive;
+
    public GameObject fullBridge;
 
    public GameObject crackedBridge;
@@ -35,6 +37,7 @@ public class LogicManager : MonoBehaviour
    void Start()
     {
         dementorSpawn = GameObject.Find("DementorSpawner").GetComponent<DementorSpawnScript>();
+        udpReceive = GameObject.Find("InputReceiver").GetComponent<UDPReceive>();
     }
 
     // Update is called once per frame
@@ -72,8 +75,8 @@ public class LogicManager : MonoBehaviour
    }
 
    public void GameOver(){
+      udpReceive.startRecieving = false;
       player.SetActive(false);
-      SoundManager.PlaySound("gameOver");
       gameOverScreen.SetActive(true);
       activeGame = false;
    }
