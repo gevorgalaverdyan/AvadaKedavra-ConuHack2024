@@ -16,6 +16,14 @@ public class LogicManager : MonoBehaviour
 
    public DementorSpawnScript dementorSpawn;
 
+   public GameObject fullBridge;
+
+   public GameObject crackedBridge;
+
+   public GameObject collapsingBridge;
+
+   public GameObject player;
+
    public int health = 3;
 
    public int level = 1;
@@ -42,6 +50,7 @@ public class LogicManager : MonoBehaviour
             level = 1 +  dementorSpawn.dementorCounter / 10;
         }
         levelText.text = "Level: " + level.ToString();
+        UpdateBridgeState();
     }
    
    [ContextMenu("Remove Health")]
@@ -49,9 +58,9 @@ public class LogicManager : MonoBehaviour
       health--; 
       if(health <= 0){
          GameOver();
-      } 
+      }
       
-      healthText.text = "Level: " + health.ToString();
+      healthText.text = "Health: " + health.ToString();
    }
 
    [ContextMenu("Restart Game")]
@@ -63,7 +72,34 @@ public class LogicManager : MonoBehaviour
    }
 
    public void GameOver(){
+      player.SetActive(false);
       gameOverScreen.SetActive(true);
       activeGame = false;
+   }
+
+   private void UpdateBridgeState(){
+      if(health == 1){
+        healthText.color = Color.red;
+        fullBridge.SetActive(false);
+        crackedBridge.SetActive(false);
+        collapsingBridge.SetActive(true); 
+      }
+      else if(health == 2){
+        healthText.color = Color.yellow;
+        fullBridge.SetActive(false);
+        crackedBridge.SetActive(true);
+        collapsingBridge.SetActive(false); 
+      }
+      else if(health == 3){
+        healthText.color = Color.green;
+        fullBridge.SetActive(true);
+        crackedBridge.SetActive(false);
+        collapsingBridge.SetActive(false); 
+      }
+      else{
+        fullBridge.SetActive(false);
+        crackedBridge.SetActive(false);
+        collapsingBridge.SetActive(false);
+      }
    }
 }
