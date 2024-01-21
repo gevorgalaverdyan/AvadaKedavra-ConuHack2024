@@ -5,6 +5,7 @@ using UnityEngine;
 public class DementorSpawnScript : MonoBehaviour
 {
     public GameObject dementor;
+    public int dementorCounter = 0;
 
     // seconds between each spawn
     public float spawnRate = 2;
@@ -31,6 +32,7 @@ public class DementorSpawnScript : MonoBehaviour
     }
 
     void SpawnDementor(){
+        dementorCounter++;
         float lowestPoint = transform.position.y - heighOffset - 0.5f;
         float highestPoint = transform.position.y + heighOffset;
 
