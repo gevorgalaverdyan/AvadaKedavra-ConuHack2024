@@ -29,6 +29,7 @@ public class PlayerAttack : MonoBehaviour
     private void Attack()
     {
         anim.SetTrigger("attack");
+        // anim.SetTrigger("wand");
         cooldownTimer = 0;
           
         fireballs[findFireball()].transform.position = firePoint.position;
