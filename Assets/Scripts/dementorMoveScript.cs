@@ -26,20 +26,26 @@ public class dementorMoveScript : MonoBehaviour
     {
       transform.position = transform.position + (Vector3.left * moveSpeed) * Time.deltaTime;
 
-      if(transform.position.x < deadZone){
+      if(transform.position.x < deadZone || !logic.activeGame){
         Destroy(gameObject);
       }
-    }
+
+      moveSpeed = 5 + logic.level * 0.4f;
+   }
 
     void OnTriggerEnter2D(Collider2D other){
-      if(!hasCollided){
-        logic.RemoveHealth();
-        hasCollided = !hasCollided;
-      }
-      moveSpeed = 0;
-      animator.SetTrigger("Rotate");
+      if(other.gameObject.tag == "Bridge"){
+        if(!hasCollided){
+          logic.RemoveHealth();
+          hasCollided = !hasCollided;
+        }
+        moveSpeed = 0;
+        animator.SetTrigger("Rotate");
 
-      StartCoroutine(DestroyGameObjectAfterDelay(1f));
+        StartCoroutine(DestroyGameObjectAfterDelay(1f));
+      }
+
+      Destroy(gameObject);
     }
 
     IEnumerator DestroyGameObjectAfterDelay(float delay)

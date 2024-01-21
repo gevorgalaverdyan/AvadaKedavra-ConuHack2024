@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Logic
+  - Bridge
   layers:
   - Default
   - TransparentFX
