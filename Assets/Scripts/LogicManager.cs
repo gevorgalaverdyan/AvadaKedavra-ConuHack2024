@@ -51,9 +51,9 @@ public class LogicManager : MonoBehaviour
       else
       {
          level = 1 + dementorSpawn.dementorCounter / 10;
+         levelText.text = "Level: " + level.ToString();
+         UpdateBridgeState();
       }
-      levelText.text = "Level: " + level.ToString();
-      UpdateBridgeState();
    }
 
    [ContextMenu("Remove Health")]

@@ -52,6 +52,7 @@ public class UDPReceive : MonoBehaviour
                 print(err.ToString());
             }
         }
+        client.Close();
     }
 
 }

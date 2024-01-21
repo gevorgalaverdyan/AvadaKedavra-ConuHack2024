@@ -25,7 +25,9 @@ public class DementorSpawnScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        spawnRate = 2 - logic.level * 0.3f;
+        if(logic.level < 5){
+            spawnRate = 2 - logic.level * 0.3f;
+        }
 
         if(timer < spawnRate){
             timer += Time.deltaTime;
