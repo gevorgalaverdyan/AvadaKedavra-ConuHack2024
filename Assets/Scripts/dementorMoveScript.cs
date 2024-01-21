@@ -36,7 +36,7 @@ public class dementorMoveScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         
         if(other.gameObject.tag == "Bridge"){
-            SoundManager.PlaySound("death");
+            SoundManager.PlaySound("crucioSpell");
             if (!hasCollided){
                 logic.RemoveHealth();
                 hasCollided = !hasCollided;

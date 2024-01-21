@@ -73,6 +73,7 @@ public class LogicManager : MonoBehaviour
 
    public void GameOver(){
       player.SetActive(false);
+      SoundManager.PlaySound("gameOver");
       gameOverScreen.SetActive(true);
       activeGame = false;
    }

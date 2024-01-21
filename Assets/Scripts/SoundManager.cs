@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static AudioClip fireSound, deathSound;
+    public static AudioClip fireSound, deathSound, gameOverSound, bridgeHitSound;
     static AudioSource audioSrc;
     // Start is called before the first frame update
     void Start()
@@ -12,13 +12,9 @@ public class SoundManager : MonoBehaviour
 
         fireSound = Resources.Load<AudioClip>("spellCast");
         deathSound = Resources.Load<AudioClip>("death");
+        gameOverSound = Resources.Load<AudioClip>("avadaKedavraaSpell");
+        bridgeHitSound = Resources.Load<AudioClip>("crucioSpell");
         audioSrc = GetComponent<AudioSource>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public static void PlaySound(string clip)
@@ -30,6 +26,12 @@ public class SoundManager : MonoBehaviour
                 break;
             case "death":
                 audioSrc.PlayOneShot(deathSound);
+                break;
+            case "gameOver":
+                audioSrc.PlayOneShot(gameOverSound);
+                break;
+            case "crucioSpell":
+                audioSrc.PlayOneShot(bridgeHitSound);
                 break;
         }
     }
