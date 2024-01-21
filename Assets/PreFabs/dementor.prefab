@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: -6781276038233913085}
   - component: {fileID: 77422902159861156}
   - component: {fileID: -4410464887739992541}
+  - component: {fileID: -3298563167985199027}
+  - component: {fileID: 3493673165429424437}
   m_Layer: 0
   m_Name: dementor
   m_TagString: Untagged
@@ -128,6 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   deadZone: -45
+  animator: {fileID: 0}
 --- !u!61 &-4410464887739992541
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -173,3 +176,40 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5, y: 5}
   m_EdgeRadius: 0
+--- !u!111 &-3298563167985199027
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2236272962551758564}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: ad3d4d042279144f2950d4163dd8fae6, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: ad3d4d042279144f2950d4163dd8fae6, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!95 &3493673165429424437
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2236272962551758564}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a81c5be3b74f2447890042351a8646ad, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
