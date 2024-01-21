@@ -34,18 +34,24 @@ public class dementorMoveScript : MonoBehaviour
    }
 
     void OnTriggerEnter2D(Collider2D other){
-      if(other.gameObject.tag == "Bridge"){
-        if(!hasCollided){
-          logic.RemoveHealth();
-          hasCollided = !hasCollided;
+        
+        if(other.gameObject.tag == "Bridge"){
+            SoundManager.PlaySound("death");
+            if (!hasCollided){
+                logic.RemoveHealth();
+                hasCollided = !hasCollided;
+            }
+            moveSpeed = 0;
+            animator.SetTrigger("Rotate");
+
+            StartCoroutine(DestroyGameObjectAfterDelay(1f));
         }
-        moveSpeed = 0;
-        animator.SetTrigger("Rotate");
+        else if(other.gameObject.tag == "projectile")
+        {
+            SoundManager.PlaySound("death");
+        }
 
-        StartCoroutine(DestroyGameObjectAfterDelay(1f));
-      }
-
-      Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     IEnumerator DestroyGameObjectAfterDelay(float delay)

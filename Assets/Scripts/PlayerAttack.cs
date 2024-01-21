@@ -28,6 +28,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack()
     {
+        SoundManager.PlaySound("attack");
         anim.SetTrigger("attack");
         // anim.SetTrigger("wand");
         cooldownTimer = 0;
